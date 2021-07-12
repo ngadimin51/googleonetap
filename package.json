@@ -1,16 +1,22 @@
 {
-  "dependencies": {
-    "express": "^4.17.1"
-  },
   "name": "googleonetap",
   "version": "1.0.0",
+  "description": "Using google one tap sign in to get a credential from google, you can using it to login your app",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngadimin51/googleonetap.git"
+  },
+  "author": "Tofik Nuryanto",
   "license": "ISC",
-  "description": ""
+  "bugs": {
+    "url": "https://github.com/ngadimin51/googleonetap/issues"
+  },
+  "homepage": "https://github.com/ngadimin51/googleonetap#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
