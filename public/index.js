@@ -9,7 +9,7 @@ function parseJwt (token) {
 };
 
 const onOneTapSignedIn = response => {
-    const credential = parseJwt(response.credential)
+    const credential = parseJwt(response.credential) //use this for your apps
     const name = credential.name
     const email = credential.email
     const picture = credential.picture
@@ -54,10 +54,6 @@ const initializeGSI = () => {
 const signout = () => {
     google.accounts.id.disableAutoSelect()
     window.location.reload()
-}
-
-function myFunction() {
-    console.log("pekok")
 }
 
 initializeGSI()
