@@ -33,8 +33,7 @@ function credentialToggleBlur() {
 
 const initializeGSI = () => {
     google.accounts.id.initialize({
-        client_id: '699153966158-d1cgd16j5pma653o8j3l6qvf7qlnitta.apps.googleusercontent.com',
-        // client_id: 'YOUR-CLIENT-ID',
+        client_id: 'YOUR-CLIENT-ID',
         cancel_on_tap_outside: false,
         callback: onOneTapSignedIn
     });
