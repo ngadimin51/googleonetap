@@ -12,6 +12,7 @@ body {
 }
 img.small-circle {
     border-radius: 50%;
+    box-shadow: 0px 3px 5px rgba(0,0,0,.5);
 }
 img.icon {
     width: 24px;
@@ -27,6 +28,10 @@ button {
     padding: 5px 10px;
     cursor: pointer;
     background-color: white;
+    box-shadow: 0px 3px 5px rgba(0,0,0,.5);
+}
+button:hover {
+    background-color: rgba(0,0,0,.2);
 }
 span {
     font-weight: bold;
@@ -35,9 +40,24 @@ span {
 }
 p {
     font-size: 1.3rem;
+    font-weight: bold;
+}
+#notif {
+    display: none;
 }
 pre {
+    opacity: 0;
     max-width: 80vw;
     white-space: pre-wrap;
     text-align: left;
+    transition: opacity 1s ease-in-out;
+}
+pre.show {
+    opacity: 1;
+    filter: blur(0px);
+    background-color: rgba(0,0,0,.2);
+    font-weight: bold;
+}
+pre.show.blur {
+    filter: blur(3px);
 }
