@@ -51,6 +51,7 @@ pre {
     white-space: pre-wrap;
     text-align: left;
     transition: opacity 1s ease-in-out;
+    padding: 5px 5px 5px 5px;
 }
 pre.show {
     opacity: 1;

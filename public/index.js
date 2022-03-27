@@ -93,7 +93,11 @@ function manuallyLogin() {
     if (uName.value === 'tofik' && uPass.value === 'ndalu.id') {
         document.querySelector('#notif').style.display = 'block'
         const credShow = document.querySelector('#credential')
-        credShow.innerHTML = ` Welcome ${uName.value}`
+        credShow.innerHTML = JSON.stringify({
+            username: uName.value,
+            password: uPass.value,
+            message: `Welcome ${uName.value}`
+        }, undefined, 2)
         credShow.classList.add('show')
     } else {
         alert('Username or Password is not match')
