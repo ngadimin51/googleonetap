@@ -37,18 +37,26 @@ const initializeGSI = () => {
         cancel_on_tap_outside: false,
         callback: onOneTapSignedIn
     });
+    // google.accounts.id.prompt((notification) => {
+    //     if (notification.isNotDisplayed()) {
+    //         console.log('isNotDisplayed')
+    //         console.log(notification.getNotDisplayedReason())
+    //     } else if (notification.isSkippedMoment()) {
+    //         console.log('isSkippedMoment')
+    //         console.log(notification.getSkippedReason())
+    //     } else if(notification.isDismissedMoment()) {
+    //         console.log('isDismissedMoment')
+    //         console.log(notification.getDismissedReason())
+    //     }
+    // });
     google.accounts.id.prompt((notification) => {
-        if (notification.isNotDisplayed()) {
-            console.log('isNotDisplayed')
-            console.log(notification.getNotDisplayedReason())
-        } else if (notification.isSkippedMoment()) {
-            console.log('isSkippedMoment')
+        try {
+            notification.getNotDisplayedReason() === 'opt_out_or_no_session' ? loginManual() : null
+        } catch (error) {
+            console.log(error)
             console.log(notification.getSkippedReason())
-        } else if(notification.isDismissedMoment()) {
-            console.log('isDismissedMoment')
-            console.log(notification.getDismissedReason())
         }
-    });
+    })
 }
 
 const signout = () => {
@@ -57,3 +65,37 @@ const signout = () => {
 }
 
 initializeGSI()
+
+function loginManual() {
+    const target = document.querySelector('#pesan')
+    target.innerHTML = `Please login manually<br>
+    <img src="https://ndalu.id/favicon.png" class="small-circle" style="max-width: 100px; max-height: 100px" />
+    <button onclick="manuallyLogin()">
+        Login
+    </button>`
+    document.querySelector('#notif').style.display = 'block'
+    const credShow = document.querySelector('#credential')
+    credShow.innerHTML = `
+    <label>User Name<label>
+    <input name="username" />
+    <br />
+    <label>Password<label>
+    <input name="password" type="password" />
+    <br />`
+    credShow.classList.add('show')
+}
+
+function manuallyLogin() {
+    const uName = document.querySelector('input[name="username"]')
+    const uPass = document.querySelector('input[name="password"]')
+    if (!uName.value) return alert('Username is empty')
+    if (!uPass.value) return alert('Password is empty')
+    if (uName.value === 'tofik' && uPass.value === 'ndalu.id') {
+        document.querySelector('#notif').style.display = 'block'
+        const credShow = document.querySelector('#credential')
+        credShow.innerHTML = ` Welcome ${uName.value}`
+        credShow.classList.add('show')
+    } else {
+        alert('Username or Password is not match')
+    }
+}
